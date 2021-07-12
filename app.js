@@ -78,11 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const optionTwoId = cardsChosenId[1]
         if (optionOneId == optionTwoId) {
             alert('You have clicked the same image!')
+            cards[optionOneId].setAttribute('src', 'img/black.png')
         } else if (cards_chosen[0] == cards_chosen[1]) {
             alert('You found a match!')
             cards[optionOneId].setAttribute('src', 'img/white.png')
             cards[optionTwoId].setAttribute('src', 'img/white.png')
-            cardsWon.push(cardsChosen)
+            cardsWon.push(cards_chosen[0])
             cards[optionOneId].removeEventListener('click', flip_card)
             cards[optionTwoId].removeEventListener('click', flip_card)
         } else {
@@ -92,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         cardsChosenId = []
         cards_chosen = []
-        alert('the card chosen list has been emptied')
         resultDisplay.innerHTML = cardsWon.length
         if (cardsWon.length === cardArray.length/2) {
             resultDisplay.textContent = "Congratualtions, you won!"
